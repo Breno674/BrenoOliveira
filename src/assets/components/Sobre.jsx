@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { FaCode, FaLaptopCode, FaTools } from 'react-icons/fa';
+import { FaCode, FaLaptopCode, FaTools, FaFileDownload } from 'react-icons/fa';
 import { SiReact, SiJavascript, SiHtml5, SiCss3, SiBootstrap, SiGit } from 'react-icons/si';
 
 function Sobre({ skills = [
@@ -67,6 +67,21 @@ function Sobre({ skills = [
               onError={(e) => e.target.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250"><rect width="250" height="250" fill="%23f8f9fa"/><text x="50%" y="50%" font-family="Arial" font-size="16" fill="%236c757d" text-anchor="middle" dy=".3em">Foto não encontrada</text></svg>'}
               loading="lazy"
             />
+            
+            <motion.a
+              href="/curriculo.pdf"
+              className="btn btn-primary btn-lg mt-4 d-flex align-items-center justify-content-center gap-2 mx-auto"
+              style={{ maxWidth: '250px' }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: '0 5px 15px rgba(0,0,0,0.3)'
+              }}
+              whileTap={{ scale: 0.95 }}
+              download
+            >
+              <FaFileDownload className="me-2" />
+              Baixar Currículo
+            </motion.a>
           </motion.div>
 
           <motion.div 
