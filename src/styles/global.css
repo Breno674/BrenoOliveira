@@ -292,3 +292,58 @@ section {
 .btn-primary.btn-lg:active {
   transform: translateY(-1px);
 }
+
+/* Fundo animado de código caindo (efeito matrix para dev web) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: transparent;
+  animation: none;
+}
+
+.code-rain {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.code-rain-symbol {
+  position: absolute;
+  color: #272257;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-size: 1.2rem;
+  opacity: 0.13;
+  user-select: none;
+  animation: codeRainAnim linear infinite;
+}
+
+.dark-theme .code-rain-symbol {
+  color: #00ffea;
+  opacity: 0.15;
+}
+
+@keyframes codeRainAnim {
+  0% { transform: translateY(-2rem); opacity: 0.15; }
+  90% { opacity: 0.25; }
+  100% { transform: translateY(100vh); opacity: 0.05; }
+}
+
+body > .code-rain {
+  z-index: 0;
+}
+
+.app, .container, main, header, footer, section {
+  position: relative;
+  z-index: 1;
+}

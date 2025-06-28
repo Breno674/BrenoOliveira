@@ -36,12 +36,36 @@ function App() {
     setIsDarkTheme(newTheme);
   };
 
+  // Componente de fundo animado
+  const codeSymbols = ['<', '>', '/', '{', '}', ';', '=', '(', ')', 'const', 'let', 'function', '=>', 'if', 'else', 'return', 'React', 'JSX', 'div', 'span', 'class', 'id'];
+  const rainColumns = 24;
+  const rain = Array.from({ length: rainColumns }).map((_, i) => {
+    const symbol = codeSymbols[Math.floor(Math.random() * codeSymbols.length)];
+    const left = (i * 100) / rainColumns;
+    const duration = 4 + Math.random() * 6;
+    const delay = Math.random() * 5;
+    return (
+      <span
+        key={i}
+        className="code-rain-symbol"
+        style={{
+          left: `${left}vw`,
+          animationDuration: `${duration}s`,
+          animationDelay: `${delay}s`,
+        }}
+      >
+        {symbol}
+      </span>
+    );
+  });
+
   if (isLoading) {
     return <Loading />;
   }
 
   return (
     <div className={`app ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
+      <div className="code-rain" aria-hidden="true">{rain}</div>
       <Header onThemeChange={handleThemeChange} />
       <main className="flex-grow-1">
         <div className="container">
